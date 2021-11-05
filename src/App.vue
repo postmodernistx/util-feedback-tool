@@ -1,30 +1,59 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Feedback</h1>
+    <section v-for="(item, title, key) in feedbackOptions" :key="`topic-${key}`">
+      <h2>{{title}}</h2>
+      <fieldset v-for="(text, index) in item" :key="`text-${index}`">
+        <label>
+          <input type="checkbox">
+          <span v-html="text"></span>
+        </label>
+      </fieldset>
+    </section>
+
+    <button @click="createFeedback">Generate</button>
+    <button @click="reset">Reset</button>
+
+    <div class="feedback" v-html="feedbackText"></div>
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import feedbackStrings from './feedback-strings.json';
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  data() {
+    return {
+      feedbackOptions: feedbackStrings,
+      checkboxes: [],
+      feedbackText: '',
+    }
+  },
+  methods: {
+    createFeedback() {
+      this.checkboxes = this.$el.querySelectorAll('input[type="checkbox"]:checked');
+      this.checkboxes.forEach((item) => {
+        this.feedbackText += `${item.nextSibling.innerHTML}<br/><br/>`;
+      });
+    },
+    reset() {
+      this.checkboxes.forEach((item) => {
+        item.checked = '';
+      });
+      this.feedbackText = '';
+    },
+  },
 }
 </script>
 
-<style>
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
   line-height: 1.5;
 }
 fieldset {
