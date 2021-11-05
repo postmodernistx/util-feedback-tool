@@ -1,4 +1,15 @@
-# feedback-tool
+# 🖍️ Feedback Tool/String Generator
+
+Nothing fancy. Just a quick util to generate strings from ticked checkboxes.
+
+## Screenshots
+
+![App screenshot](https://github.com/postmodernistx/util-feedback-tool/blob/master/screenshot.png?raw=true)
+
+
+## Tech Stack
+
+**Client:** Vue, Sass
 
 ## Project setup
 ```
