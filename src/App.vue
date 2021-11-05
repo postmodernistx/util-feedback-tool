@@ -17,6 +17,7 @@ export default {
 </script>
 
 <style>
+<style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -24,5 +25,23 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  line-height: 1.5;
+}
+fieldset {
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+input {
+  margin-right: 10px;
+}
+
+button {
+  padding: 10px 8px;
+  margin-right: 10px;
+}
+
+.feedback {
+  margin-top: 50px;
 }
 </style>
